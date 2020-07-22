@@ -14,5 +14,6 @@
                     echo '<li class="nav-item" role="presentation"><a class="nav-link" href="TuyenSinh.php?id='.$matk.'"><i class="fab fa-wpforms"></i><span>Tuyển sinh</span></a></li>'; }?>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+                
             </div>
         </nav>
