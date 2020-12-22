@@ -16,4 +16,5 @@ else{
     echo 'location.href="quenmk.php";';
     echo '</script>';
 }
+mysqli_close($conn);
 ?>

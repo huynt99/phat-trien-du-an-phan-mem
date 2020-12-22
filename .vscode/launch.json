@@ -8,7 +8,7 @@
             "type": "pwa-chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "http://localhost:81/phattrienduanphanmem/index.php",
+            "url": "http://localhost/phattrienduanphanmem1/",
             "webRoot": "${workspaceFolder}"
         }
     ]

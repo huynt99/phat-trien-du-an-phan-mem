@@ -1,5 +1,5 @@
 <?php
-$matk=$_GET['id'];
+
 $mabv=$_GET['post'];
 require('connect.php');
 $sql = "Select * from baiviet where mabv = '$mabv'";
@@ -11,18 +11,18 @@ if($xoa){
     if(mysqli_query($conn,$sql)){
         echo '<script language="javascript">';
         echo 'alert("Xóa bài viết thành công");';
-        echo 'location.href="Post.php?id='.$matk.'"</script>';
+        echo 'location.href="Post.php"</script>';
     }
     else{
         echo '<script language="javascript">';
         echo 'alert("Xóa bài viết thất bại");';
-        echo 'location.href="Post.php?id='.$matk.'"</script>';
+        echo 'location.href="Post.php"</script>';
     }
 }
 else {
     echo '<script language="javascript">';
     echo 'alert("Xóa ảnh trên server thất bại");';
-    echo 'location.href="Post.php?id='.$matk.'"</script>';
+    echo 'location.href="Post.php"</script>';
 }
 mysqli_close($conn);
 ?>

@@ -1,4 +1,5 @@
 <?php
+    session_start();
     $matkhau =$_POST['matkhau'];
     $email =$_POST['email'];
     require('connect.php');
@@ -8,13 +9,17 @@
         $row = mysqli_fetch_assoc($result);
         if (password_verify($matkhau,$row['matkhau'])) {
             if($row['trangthai']=='1'){
-            echo '<script language="javascript">';
-            echo 'location.href="admin.php?id='.$row['matk'].'";';
-            echo '</script>';
+                $_SESSION['matk']=$row['matk'];
+                $_SESSION['quyen']=$row['maquyen'];
+                echo '<script language="javascript">';
+                echo 'location.href="admin.php";';
+                echo '</script>';
             }
             else{
+                $_SESSION['matk']=$row['matk'];
+                $_SESSION['quyen']=$row['maquyen'];
                 echo '<script language="javascript">';
-                echo 'location.href="kichhoat.php?id='.$row['matk'].'";';
+                echo 'location.href="kichhoat.php";';
                 echo '</script>';
             }
         }

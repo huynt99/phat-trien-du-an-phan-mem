@@ -1,49 +1,35 @@
 <?php
-    $namechude=$_POST['chude'];
+session_start();
+if(empty($_SESSION['matk'])){ header('Location: login.php');}
+$mabv=$_GET['post'];
+if($_POST['noidung']!=""){
+    $chude=$_POST['chude'];
     $tieude =$_POST['tieude'];
     $noidung =$_POST['noidung'];
-    $matk=$_GET['id'];
-    $mabv=$_GET['post'];
+    $tomtat=$_POST['tomtat'];
     require('connect.php');
     $sqlpost = "Select * from baiviet where mabv = '$mabv'";
     $rowpost = mysqli_fetch_assoc(mysqli_query($conn, $sqlpost));
-    Switch($namechude){
-        case 'tsdaihoc':
-            $chude='Tuyển sinh đại học';
-            break;
-        case 'tsthacsi':
-            $chude='Tuyển sinh thạc sĩ';
-            break;
-        case 'tstiensi':
-            $chude='Tuyển sinh tiến sĩ';
-            break;
-        case 'ttdaihoc':
-            $chude='Tin tức đại học';
-            break;
-        case 'ttsaudaihoc':
-            $chude='Tin tức sau đại học';
-            break;
-    }
     if(empty($_FILES['image']['name'])){
-        if($rowpost['chude']==$chude&$rowpost['tieude']==$tieude&$rowpost['noidung']==$noidung){
+        if($rowpost['chude']==$chude&$rowpost['tieude']==$tieude&$rowpost['noidung']==$noidung&$rowpost['tomtat']==$tomtat){
         echo '<script language="javascript">';
         echo 'alert("Bài viết không có sự thay đổi nào");';
-        echo 'location.href="Post.php?id='.$matk.'";';
+        echo 'location.href="Post.php";';
         echo '</script>';
         }
         else{
-            $sql = "UPDATE baiviet set  chude='$chude', tieude='$tieude',noidung='$noidung',ngaytao=NOW() where mabv='$mabv';";
+            $sql = "UPDATE baiviet set  chude='$chude', tieude='$tieude',noidung='$noidung',tomtat='$tomtat',ngaytao=NOW() where mabv='$mabv';";
             mysqli_set_charset($conn,'UTF8');
             if(mysqli_query($conn,$sql)){
                 echo '<script language="javascript">';
                 echo 'alert("Sửa bài viết thành công");';
-                echo 'location.href="Post.php?id='.$matk.'";';
+                echo 'location.href="Post.php";';
                 echo '</script>';
             }
             else{
                 echo '<script language="javascript">';
                 echo 'alert("Sửa bài viết thất bại");';
-                echo 'location.href="Post.php?id='.$matk.'";';
+                echo 'location.href="Post.php";';
                 echo '</script>';
             };
         }
@@ -65,42 +51,49 @@
     }
     if(empty($error)){
         $xoa=unlink($rowpost['anh']);
-        $sql = "UPDATE baiviet set  chude='$chude', tieude='$tieude',anh='$target_file',noidung='$noidung',ngaytao=NOW() where mabv='$mabv';";
+        $sql = "UPDATE baiviet set  chude='$chude', tieude='$tieude',anh='$target_file',noidung='$noidung',tomtat='$tomtat',ngaytao=NOW() where mabv='$mabv';";
         mysqli_set_charset($conn,'UTF8');
         if($xoa){
             if(move_uploaded_file($_FILES['image']['tmp_name'],$target_file)){
                 if(mysqli_query($conn,$sql)){
                     echo '<script language="javascript">';
                     echo 'alert("Sửa bài viết thành công");';
-                    echo 'location.href="Post.php?id='.$matk.'";';
+                    echo 'location.href="Post.php";';
                     echo '</script>';
                 }
                 else{
                     echo '<script language="javascript">';
                     echo 'alert("Sửa bài viết thất bại");';
-                    echo 'location.href="Post.php?id='.$matk.'";';
+                    echo 'location.href="Post.php";';
                     echo '</script>';
                 };
             }
             else{
                 echo '<script language="javascript">';
                 echo 'alert("Up ảnh thất bại, không thể sửa bài viết");';
-                echo 'location.href="suabv.php?id='.$matk.'&post='.$mabv.';';
+                echo 'location.href="suabv.php?post='.$mabv.';';
                 echo '</script>';
             }
         }
         else {
             echo '<script language="javascript">';
             echo 'alert("Xóa ảnh cũ trên server thất bại, không thể sửa bài viết");';
-            echo 'location.href="suabv.php?id='.$matk.'&post='.$mabv.';';
+            echo 'location.href="suabv.php?post='.$mabv.';';
             echo '</script>';
         }
     }
     else{
         echo '<script language="javascript">';
         echo 'alert("'.$error['image'].'");';
-        echo 'location.href="suabv.php?id='.$matk.'&post='.$mabv.'";';
+        echo 'location.href="suabv.php?post='.$mabv.'";';
         echo '</script>';
     }
+    mysqli_close($conn);
+}
+}else{
+    echo '<script language="javascript">';
+    echo 'alert("Hãy nhập nội dung cho bài viết");';
+    echo 'location.href="suabv.php?post='.$mabv.'";';
+    echo '</script>';
 }
 ?>

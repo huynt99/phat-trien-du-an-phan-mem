@@ -1,4 +1,5 @@
 <?php
+if(isset($_GET['id'])){
 include("head.php");
 $matk=$_GET['id'];
 require('connect.php');
@@ -24,5 +25,8 @@ $row = mysqli_fetch_assoc(mysqli_query($conn, $sql));
     </div>
 </body>
 <?php
-include("foot.php");
+include("foot.php");}
+else{
+    header('Location: login.php');
+}
 ?>

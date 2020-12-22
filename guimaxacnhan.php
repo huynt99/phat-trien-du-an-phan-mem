@@ -1,5 +1,4 @@
 <?php
-include("head.php");
 $email =$_POST['email'];
 require('connect.php');
 $sql = "Select * from taikhoan where email = '$email'";

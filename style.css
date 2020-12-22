@@ -142,7 +142,7 @@ body {
   .btn-outline-dark2 {
     color: #000;
     border-color: #000;
-    background: #fff url("../images/btn-dark.png") repeat-x 0 center;
+    background: #fff url("./images/btn-dark.png") repeat-x 0 center;
   }
   .btn-outline-dark2:hover, .btn-outline-dark2:focus {
     opacity: .85;
@@ -691,7 +691,7 @@ body {
   
   .qa-form {
     padding: 15px 12px 18px 12px;
-    background: url("../images/bg-pattern.jpg") repeat;
+    background: url("./images/bg-pattern.jpg") repeat;
   }
   
   .qa .title {
@@ -709,6 +709,12 @@ body {
     padding-bottom: 5px;
     background-color: #fff;
   }
+  .pull-right {
+    float: right;
+}
+.pull-left {
+    float: left;
+}
   .forms input.form-control,
   .forms select.form-control {
     height: 32px;
@@ -861,7 +867,7 @@ body {
     display: block;
     position: absolute;
     top: 50%;
-    background: url("../images/bg-gradient-line.png") no-repeat center center;
+    background: url("./images/bg-gradient-line.png") no-repeat center center;
     background-size: 100% 100%;
     z-index: -1;
   }
@@ -1005,3 +1011,20 @@ body {
 .aui body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:20px;color:#333;background-color:white}
 .aui a{color:#0af;text-decoration:none}
 .aui a:hover,.aui a:focus{color:#0077b3;text-decoration:underline}
+.related-list li {
+  list-style: none;
+  padding: 25px 0;
+  border-bottom: 1px dotted #001373;
+  font-size: 18px;
+  line-height: 24px;
+}
+.tab{width:100%;display:none;padding:1rem;background:#fafafa;border:2px solid #90CAF9}
+.tab.active{display:block}
+.table-bordered td, .table-bordered th{
+ border: 1px solid #000000;
+ border-bottom: 1px solid #000000;
+}
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #000000;
+}

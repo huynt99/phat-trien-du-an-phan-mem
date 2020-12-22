@@ -17,7 +17,7 @@ include("head.php");
             <p><a href="quenmk.php"><small>Quên mật khẩu</small></a></p>
             <p id="errors"></p>
             </div>
-            <button id="btn_back" type="button" class="btn_login pull-left" name="btnback"><a class= "a_back" href="index.php">Back</a></button>
+            <a class= "a_back" href="index.php"><button id="btn_back" type="button" class="btn_login pull-left" name="btnback">Back</button></a>
             <button id="btnlogin" type="submit" class="btn_login pull-right" name="btnlogin">Log In</button>
             <div class="clear-fix"></div>
       </form>
